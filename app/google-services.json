@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "232335401195",
+    "firebase_url": "https://gifter-e730d.firebaseio.com",
+    "project_id": "gifter-e730d",
+    "storage_bucket": "gifter-e730d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:232335401195:android:9df958effeb50f6f",
+        "android_client_info": {
+          "package_name": "com.giffter.bestgift"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "232335401195-kk6s5l3h1eiko7hs9tebvgnd2icbo1v3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.giffter.bestgift",
+            "certificate_hash": "3af19fb09b282486b1b068791353711e51120ebc"
+          }
+        },
+        {
+          "client_id": "232335401195-aq9khtjcgfrgl7s3sd3lspaei24617ts.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLGo0sJQ5g2-RccGGMlq-1mTmYhvbdq3o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "232335401195-aq9khtjcgfrgl7s3sd3lspaei24617ts.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
