@@ -27,16 +27,5 @@ class GiftAdapter() : RecyclerView.Adapter<GiftViewHolder>() {
         return items.size
     }
 
-//    fun removeAt(position: Int) {
-//        items.removeAt(position)
-//        notifyItemRemoved(position)
-//    }
-//
-//    fun clearItems() {
-//        items.clear()
-//        notifyDataSetChanged()
-//    }
-
-
 }
 

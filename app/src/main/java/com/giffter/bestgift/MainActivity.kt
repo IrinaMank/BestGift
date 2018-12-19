@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.giffter.bestgift.data.GiftApiRepository
 import com.giffter.bestgift.ui.AllGiftFragment
+import com.giffter.bestgift.ui.filter.FilterFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -32,19 +33,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        //val repo = GiftApiRepository()
-
-        supportFragmentManager.beginTransaction().add(AllGiftFragment.newInstance(1), "tag")
+        supportFragmentManager.beginTransaction().replace(R.id.main_container, AllGiftFragment
+                .newInstance(1))
                 .commit()
-//        repo.getAllGifts().observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(
-//                        {
-//                            print(it.firstOrNull())
-//                        },
-//                        {
-//                            print(it.message)
-//                        }
-//                )
     }
 
     override fun onBackPressed() {
@@ -78,6 +69,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 // Handle the camera action
             }
             R.id.nav_gallery -> {
+                supportFragmentManager.beginTransaction().replace(R.id.main_container, FilterFragment
+                        .newInstance())
+                        .commit()
 
             }
             R.id.nav_slideshow -> {

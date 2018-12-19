@@ -1,4 +1,4 @@
-package com.giffter.bestgift.domain.entity.presenter
+package com.giffter.bestgift.domain.presenter
 
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy

@@ -1,6 +1,5 @@
-package com.giffter.bestgift.domain.entity.presenter
+package com.giffter.bestgift.domain.presenter
 
-import android.widget.AdapterView
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.giffter.bestgift.data.GiftApiRepository

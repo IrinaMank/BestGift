@@ -1,9 +1,6 @@
-package com.giffter.bestgift.ui
+package com.giffter.bestgift.ui.filterlist
 
-import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -14,26 +11,21 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.giffter.bestgift.R
 import com.giffter.bestgift.domain.entity.Gift
-import com.giffter.bestgift.domain.presenter.AllGiftsPresenter
-import com.giffter.bestgift.domain.presenter.AllGiftsView
+import com.giffter.bestgift.domain.presenter.filterlist.FilterListPresenter
+import com.giffter.bestgift.domain.presenter.filterlist.FilterListView
 import com.giffter.bestgift.ui.gifts_recycler.GiftAdapter
 import org.koin.android.ext.android.inject
 
-
-/**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [AllGiftFragment.OnListFragmentInteractionListener] interface.
- */
-class AllGiftFragment : MvpAppCompatFragment(), AllGiftsView {
+class FilterListFragment : MvpAppCompatFragment(), FilterListView {
 
     @InjectPresenter
-    lateinit var presenter: AllGiftsPresenter
+    lateinit var presenter: FilterListPresenter
 
-    val presKoin: AllGiftsPresenter by inject()
+    val presKoin: FilterListPresenter by inject()
 
-    @ProvidePresenter fun providePresenter(): AllGiftsPresenter {
-return presKoin
+    @ProvidePresenter
+    fun providePresenter(): FilterListPresenter {
+        return presKoin
     }
 
 
@@ -58,12 +50,10 @@ return presKoin
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_gift_list, container, false)
 
-
-        // Set the adapter
         if (view is RecyclerView) {
             with(view) {
                 layoutManager =  LinearLayoutManager(context)
-                
+
                 adapter = adapterGifts
             }
         }
@@ -74,6 +64,6 @@ return presKoin
 
         @JvmStatic
         fun newInstance(columnCount: Int) =
-                AllGiftFragment()
+                FilterListFragment()
     }
 }
