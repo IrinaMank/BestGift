@@ -32,9 +32,9 @@ class FilterPresenter(
     fun getGifts() = repo.getAllGifts()
             .map {
                 it.filter {
-                    it.occasion.any { occassion -> occasions.map { it?.serverName }.contains(occassion)} &&
-                            it.role.any { role -> roles.map { it?.serverName }.contains(role)} &&
-                            it.gender.any { gender.map { it?.serverName }.contains(it) } &&
+                    it.occasion.intersect(occasions.map { it?.serverName }.asIterable()).isNotEmpty()|| occasions.isEmpty() &&
+                            it.role.intersect(roles.map { it?.serverName }.asIterable()).isNotEmpty() || roles.isEmpty() &&
+                            it.gender.intersect(gender.map { it?.serverName }.asIterable()).isNotEmpty()|| gender.isEmpty()  &&
                             it.ageFrom <= ageFrom && it.ageTo >= ageTo
                 }
             }

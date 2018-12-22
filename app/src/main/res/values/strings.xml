@@ -7,4 +7,6 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="find_btn">Найти</string>
+    <string name="ok">Ok</string>
+    <string name="cancel_filter">Сбросить фильтр</string>
 </resources>
