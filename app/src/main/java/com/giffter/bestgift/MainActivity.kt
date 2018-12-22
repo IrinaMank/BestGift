@@ -8,10 +8,8 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import com.giffter.bestgift.data.GiftApiRepository
 import com.giffter.bestgift.ui.AllGiftFragment
 import com.giffter.bestgift.ui.filter.FilterFragment
-import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
@@ -21,10 +19,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -34,9 +28,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nav_view.setNavigationItemSelectedListener(this)
 
         supportFragmentManager.beginTransaction().replace(R.id.main_container, AllGiftFragment
-                .newInstance(1))
-                .commit()
-    }
+    .newInstance(1))
+    .commit()
+}
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -65,25 +59,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
+            R.id.all_gifts -> {
+                supportFragmentManager.beginTransaction().replace(R.id.main_container, AllGiftFragment
+                        .newInstance(1))
+                        .commit()
             }
-            R.id.nav_gallery -> {
+            R.id.filter_gifts -> {
                 supportFragmentManager.beginTransaction().replace(R.id.main_container, FilterFragment
                         .newInstance())
                         .commit()
 
             }
-            R.id.nav_slideshow -> {
+            R.id.communicate -> {
 
             }
-            R.id.nav_manage -> {
-
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
+            R.id.developer -> {
 
             }
         }

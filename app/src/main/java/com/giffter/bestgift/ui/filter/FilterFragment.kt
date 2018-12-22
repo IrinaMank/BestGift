@@ -1,8 +1,6 @@
 package com.giffter.bestgift.ui.filter
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +10,12 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.giffter.bestgift.R
-import com.giffter.bestgift.domain.entity.Gift
+import com.giffter.bestgift.domain.entity.Gender
+import com.giffter.bestgift.domain.entity.Occasion
 import com.giffter.bestgift.domain.entity.Role
 import com.giffter.bestgift.domain.presenter.filter.FilterPresenter
 import com.giffter.bestgift.domain.presenter.filter.FilterView
-import com.giffter.bestgift.ui.AllGiftFragment
-import com.giffter.bestgift.ui.gifts_recycler.GiftAdapter
+import com.giffter.bestgift.ui.filterlist.FilterListFragment
 import kotlinx.android.synthetic.main.fragment_filter.*
 import org.koin.android.ext.android.inject
 
@@ -46,30 +44,46 @@ class FilterFragment : MvpAppCompatFragment(), FilterView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val myItems = listOf("c.dob")
+        val occasssions = Occasion.values().map {it.displayedName}
+        val roles = Role.values().map {it.displayedName}
 
         occasion_btn.setOnClickListener {
             MaterialDialog(context!!).show {
 
-                listItemsMultiChoice(items = myItems) { dialog, indices, items ->
-                    presenter.occasions = items
-                    presenter.getGifts()
+                listItemsMultiChoice(items = occasssions) { dialog, indices, items ->
+                    presenter.occasions = items.map { Occasion.getValueOf(it) }
                 }
-                positiveButton(R.string.app_name)
+                positiveButton(R.string.find_btn)
             }
         }
-
-        val roles = Role.values().map { it.displayedName }.toList()
 
         role_btn.setOnClickListener {
             MaterialDialog(context!!).show {
 
                 listItemsMultiChoice(items = roles) { dialog, indices, items ->
-                    selectedItems = items
+                    presenter.roles = items.map { Role.getValueOf(it) }
                 }
-                positiveButton(R.string.app_name)
+                positiveButton(R.string.find_btn)
             }
         }
+
+        filter_btn.setOnClickListener {
+            val genders = mutableListOf<Gender>()
+            if (woman.isChecked) genders.add(Gender.WOMAN)
+            if (man.isChecked) genders.add(Gender.MAN)
+
+            presenter.gender = genders
+
+            presenter.ageFrom = rangebar.leftIndex
+            presenter.ageTo = rangebar.rightIndex
+
+            presenter.getGifts()
+            activity!!.supportFragmentManager.beginTransaction().replace(R.id.main_container,
+                    FilterListFragment.newInstance(1))
+                    .addToBackStack(null)
+                    .commit()
+        }
+
     }
 
     companion object {

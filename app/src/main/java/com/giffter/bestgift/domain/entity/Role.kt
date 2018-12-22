@@ -2,29 +2,21 @@ package com.giffter.bestgift.domain.entity
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-enum class Role(val displayedName: String) {
+enum class Role(val displayedName: String, val serverName: String) {
 
-    @JsonProperty("m.friend")
-    FRIEND("m.friend"),
+    FRIEND("Друг", "m.friend"),
+    FAMILIAR("Знакомый", "m.familiar"),
+    COLLEAGUE("Коллега", "m.colleague"),
+    PARENT("Родитель", "m.parent"),
+    SISOBRO("Сестра/Брат", "m.sisobro"),
+    GRANDPARENT("Бабушка/дедушка", "m.grangparent"),
 
-    @JsonProperty("m.familiar")
-    FAMILIAR("m.familiar"),
+    CLOSERELATIVE("Близкий родственник", "m.closerelative"),
 
-    @JsonProperty("m.colleague")
-    COLLEAGUE("m.colleague"),
+    NONCLOSERELATIVE("Дальний родственник", "m.noncloserelative");
 
-    @JsonProperty("m.parent")
-    PARENT("m.parent"),
-
-    @JsonProperty("m.sisobro")
-    SISOBRO("m.sisobro"),
-
-    @JsonProperty("m.grangparent")
-    GRANDPARENT("m.grangparent"),
-
-    @JsonProperty("m.closerelative")
-    CLOSERELATIVE("m.closerelative"),
-
-    @JsonProperty("m.noncloserelative")
-    NONCLOSERELATIVE("m.noncloserelative"),
+    companion object {
+        fun getValueOf(value: String): Role?
+                = Role.values().find{ it.displayedName == value }
+    }
 }

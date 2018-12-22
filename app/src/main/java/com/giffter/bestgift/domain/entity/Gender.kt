@@ -2,12 +2,14 @@ package com.giffter.bestgift.domain.entity
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-enum class Gender(val displayedName: String) {
+enum class Gender(val displayedName: String, val serverName: String) {
 
-    @JsonProperty("s.m")
-    MAN("s.m"),
+    MAN("Мужской","s.m"),
+    WOMAN("Женский","s.f");
 
-    @JsonProperty("s.f")
-    WOMAN("s.f"),
+    companion object {
+        fun getValueOf(value: String): Gender?
+                = Gender.values().find{ it.displayedName == value }
+    }
 
 }
