@@ -54,7 +54,7 @@ class FilterFragment : MvpAppCompatFragment(), FilterView {
                 listItemsMultiChoice(items = occasssions) { dialog, indices, items ->
                     presenter.occasions = items.map { Occasion.getValueOf(it) }
                 }
-                positiveButton(R.string.find_btn)
+                positiveButton(R.string.ok)
             }
         }
 
@@ -64,7 +64,7 @@ class FilterFragment : MvpAppCompatFragment(), FilterView {
                 listItemsMultiChoice(items = roles) { dialog, indices, items ->
                     presenter.roles = items.map { Role.getValueOf(it) }
                 }
-                positiveButton(R.string.find_btn)
+                positiveButton(R.string.ok)
             }
         }
 

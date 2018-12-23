@@ -14,6 +14,7 @@ import com.giffter.bestgift.domain.entity.Gift
 import com.giffter.bestgift.domain.presenter.filterlist.FilterListPresenter
 import com.giffter.bestgift.domain.presenter.filterlist.FilterListView
 import com.giffter.bestgift.ui.gifts_recycler.GiftAdapter
+import kotlinx.android.synthetic.main.fragment_gift_list.*
 import org.koin.android.ext.android.inject
 
 class FilterListFragment : MvpAppCompatFragment(), FilterListView {
@@ -28,14 +29,15 @@ class FilterListFragment : MvpAppCompatFragment(), FilterListView {
         return presKoin
     }
 
-
     override fun showProgress(show: Boolean) {
-
+        if (show)
+            progressbar.visibility = View.VISIBLE
+        else progressbar.visibility = View.GONE
     }
 
     override fun hideSwipeProgress() {
-
     }
+
 
     override fun showGifts(gifts: List<Gift>) {
         adapterGifts.items = gifts
@@ -50,14 +52,16 @@ class FilterListFragment : MvpAppCompatFragment(), FilterListView {
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_gift_list, container, false)
 
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager =  LinearLayoutManager(context)
-
-                adapter = adapterGifts
-            }
-        }
         return view
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        with(list) {
+            layoutManager =  LinearLayoutManager(context)
+
+            adapter = adapterGifts
+        }
     }
 
     companion object {

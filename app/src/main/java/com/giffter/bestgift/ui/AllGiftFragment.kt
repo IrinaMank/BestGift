@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +19,7 @@ import com.giffter.bestgift.domain.entity.Gift
 import com.giffter.bestgift.domain.presenter.AllGiftsPresenter
 import com.giffter.bestgift.domain.presenter.AllGiftsView
 import com.giffter.bestgift.ui.gifts_recycler.GiftAdapter
+import kotlinx.android.synthetic.main.fragment_gift_list.*
 import org.koin.android.ext.android.inject
 
 
@@ -38,7 +41,8 @@ return presKoin
 
 
     override fun showProgress(show: Boolean) {
-
+        if (show) {progressbar.visibility = View.VISIBLE}
+        else {progressbar.visibility = View.GONE}
     }
 
     override fun hideSwipeProgress() {
@@ -60,14 +64,19 @@ return presKoin
 
 
         // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager =  LinearLayoutManager(context)
-                
-                adapter = adapterGifts
-            }
-        }
+
+
+
         return view
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        with(list) {
+            layoutManager =  LinearLayoutManager(context)
+
+            adapter = adapterGifts
+        }
     }
 
     companion object {

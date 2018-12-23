@@ -6,34 +6,41 @@
 
 <Button
     android:id="@+id/occasion_btn"
-    android:layout_width="match_parent"
+    android:layout_width="200dp"
     android:layout_height="wrap_content"
-    android:text="Праздник"/>
+    android:text="Праздник"
+    android:layout_gravity="center_horizontal"
+    style="@style/Widget.AppCompat.Button.Colored"/>
 
     <Button
         android:id="@+id/role_btn"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Роль"/>
+        android:text="Роль"
+        android:layout_gravity="center_horizontal"
+        style="@style/Widget.AppCompat.Button.Colored"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Пол"
         android:gravity="center"
-        android:textSize="20dp"/>
+        android:textSize="20dp"
+        android:textColor="@color/colorAccent"/>
 
         <CheckBox
             android:id="@+id/woman"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Женский"
+            android:textColor="@color/colorAccent"
             android:layout_marginEnd="16dp"/>
 
         <CheckBox
             android:id="@+id/man"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
             android:text="Мужской"/>
 
 
@@ -42,7 +49,8 @@
         android:layout_height="wrap_content"
         android:text="Возраст"
         android:gravity="center"
-        android:textSize="20dp"/>
+        android:textSize="20dp"
+        android:textColor="@color/colorAccent"/>
 
     <com.appyvet.materialrangebar.RangeBar
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -65,8 +73,10 @@
 
     <Button
         android:id="@+id/filter_btn"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:text="Filter"/>
 
 </LinearLayout>

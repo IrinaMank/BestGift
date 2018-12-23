@@ -6,11 +6,11 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/all_gifts"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_gift"
             android:title="Все подарки" />
         <item
             android:id="@+id/filter_gifts"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_search"
             android:title="Подобрать подарок" />
 
     </group>
@@ -19,11 +19,11 @@
         <menu>
             <item
                 android:id="@+id/communicate"
-                android:icon="@drawable/ic_menu_slideshow"
+                android:icon="@drawable/ic_mail"
                 android:title="Обратная связь" />
             <item
                 android:id="@+id/developer"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_settings"
                 android:title="Панель разработчика" />
         </menu>
     </item>
